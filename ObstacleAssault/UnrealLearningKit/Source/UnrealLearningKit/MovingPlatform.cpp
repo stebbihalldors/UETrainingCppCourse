@@ -33,14 +33,14 @@ void AMovingPlatform::MovePlatform(const float DeltaTime)
 	else
 	{
 		FVector CurrentLocation = GetActorLocation();
-		CurrentLocation = CurrentLocation + PlatformVelocity * DeltaTime;
+		CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
 		SetActorLocation(CurrentLocation);
 	}
 }
 
-void AMovingPlatform::RotatePlatform(float DeltaTime) const
+void AMovingPlatform::RotatePlatform(float DeltaTime)
 {
-	UE_LOG(LogTemp, Display, TEXT("%s Rotating..."), *GetName());
+	AddActorLocalRotation(RotationVelocity * DeltaTime);
 }
 
 bool AMovingPlatform::ShouldPlatformReturn() const
